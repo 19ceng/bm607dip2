@@ -407,12 +407,222 @@
 			sırala (mutlak genlik olarak), karekökünü hesapla, köşegene yerleştir
 		\medskip
 
-		\item "reduced SVD" nedir?
+		\item "reduced SVD" nedir? Çalışma sorusu
 	\end{itemize}
 }
 
 \frame {
+	\frametitle {Geometrik Dönüşümler: 2D Kayma}
 
+	\includegraphics[width=0.9\textwidth]{img/11-trans.png}
+
+	Bu işin iki yönü var: görüntüyü kaydırma, görüntüdeki kaymayı belirle
+}
+
+\frame {
+	\frametitle {Geometrik Dönüşümler: 2D Kayma: eşitlik}
+
+	\begin{columns}
+		\column{0.5\textwidth}
+			\includegraphics[width=0.9\textwidth]{img/11-trans-eq.png}
+		\column{0.5\textwidth}
+			$P = (x, y)$ ve $t = (t_x, t_y)$
+	\end{columns}
+	\medskip
+
+	$P' = (x + t_x, y + t_y) = P + t$
+}
+
+\frame {
+	\frametitle {Geometrik Dönüşümler: 2D Kayma: matris}
+
+	\begin{columns}
+		\column{0.5\textwidth}
+			\includegraphics[width=0.9\textwidth]{img/11-trans-eq.png}
+		\column{0.5\textwidth}
+			$P = (x, y)$ ve $t = (t_x, t_y)$
+	\end{columns}
+	\medskip
+
+	$P' \rightarrow \begin{bmatrix}
+		x + t_x\\
+		y + t_y \end{bmatrix} = \begin{bmatrix}
+			1 & 0 & t_x\\
+			0 & 1 & t_y
+		\end{bmatrix} \cdot \begin{bmatrix}
+			x\\y\\1
+		\end{bmatrix}$
+}
+
+\frame {
+	\frametitle {Geometrik Dönüşümler: homojen koordinatlar}
+
+	kartezyen - homojen koordinat dönüşümü
+	\medskip
+
+	$(x, y)    \rightarrow (x \cdot z, y \cdot z, z), z \neq 0$
+	$(x, y, z) \rightarrow (x \cdot w, y \cdot, z \cdot w, w), w \neq 0$
+	\medskip
+
+	$(t_x, t_y) \rightarrow (t_x, t_y, 1)$
+	\medskip
+
+	Ters dönüşüm
+	\medskip
+
+	$(x,y,z), z \neq 0 \rightarrow (x/z, y/z)$
+	$(x,y,z,w), w \neq 0 \rightarrow (x/w, y/w, z/w)$
+}
+
+\frame {
+	\frametitle {Geometrik Dönüşümler: kayma: homojen}
+
+	\begin{columns}
+		\column{0.5\textwidth}
+			\includegraphics[width=0.9\textwidth]{img/11-trans-eq.png}
+		\column{0.5\textwidth}
+			$P = (x, y) \rightarrow (x,y,1)$ ve $t = (t_x, t_y) \rightarrow (t_x
+			t_y, 1)$
+	\end{columns}
+	\medskip
+
+	$P' \rightarrow \begin{bmatrix}
+		x + t_x\\
+		y + t_y\\
+		1\end{bmatrix} = \begin{bmatrix}
+			1 & 0 & t_x\\
+			0 & 1 & t_y\\
+			0 & 0 & 1
+		\end{bmatrix} \cdot \begin{bmatrix}
+			x\\y\\1
+		\end{bmatrix}$
+	\medskip
+	$P' = T \cdot P$
+}
+
+\frame {
+	\frametitle {Geometrik Dönüşümler: ölçekleme}
+
+	\includegraphics[width=0.9\textwidth]{img/14-scale.png}
+}
+
+\frame {
+	\frametitle {Geometrik Dönüşümler: ölçekleme: eşitlik}
+
+	\begin{columns}
+		\column{0.5\textwidth}
+			\includegraphics[width=0.9\textwidth]{img/14-scale-eq.png}
+		\column{0.5\textwidth}
+			$P = (x, y) \rightarrow (x,y,1)$ ve $P' = (s_x \cdot x, c_y \cdot y,
+			y) \rightarrow (s_x \cdot x, s_y \cdot y, 1)$
+	\end{columns}
+	\medskip
+
+	$P' \rightarrow \begin{bmatrix}
+		s_x \cdot x\\
+		s_y \cdot y\\
+		1\end{bmatrix} = \begin{bmatrix}
+			s_x & 0 & 0\\
+			0 & s_y & 0\\
+			0 & 0 & 1
+		\end{bmatrix} \cdot \begin{bmatrix}
+			x\\y\\1
+		\end{bmatrix}$
+	\medskip
+	$P' = S \cdot P$
+}
+
+\frame {
+	\frametitle {Geometrik Dönüşümler: ölçekle - kaydır}
+
+	\includegraphics[width=0.9\textwidth]{img/15-scale-trans.png}
+
+	\medskip
+	$P'' = T \cdot P' = T \cdot (S \cdot P) = (T \cdot S) \cdot P$
+}
+
+\frame {
+	\frametitle {Geometrik Dönüşümler: ölçekle - kaydır: eşitlik}
+
+	$P'' = T \cdot P' = T \cdot (S \cdot P) = (T \cdot S) \cdot P$
+	\medskip
+
+	$P'' = T \cdot S \cdot P = \begin{bmatrix}
+		1 & 0 & t_x\\
+		0 & 1 & t_y\\
+		0 & 0 & 1
+	\end{bmatrix} \cdot \begin{bmatrix}
+		s_x & 0   & 0\\
+		0   & s_y & 0\\
+		0   & 0   & 1
+	\end{bmatrix} \cdot \begin{bmatrix}
+		x\\y\\1
+	\end{bmatrix}$
+	\medskip
+
+	$P'' = \begin{bmatrix}
+		s_x & 0   & t_x\\
+		0   & t_y & t_y\\
+		0   & 0   & 1
+	\end{bmatrix} \cdot \begin{bmatrix}
+		x\\y\\1
+	\end{bmatrix} = \begin{bmatrix}
+		s_x \cdot x + t_x\\
+		s_y \cdot y + t_y\\
+		1
+	\end{bmatrix}$
+}
+
+\frame {
+	\frametitle {Geometrik Dönüşümler: sıra önemlidir}
+
+	$P'' = S \cdot T \cdot P \neq T \cdot S \cdot P$
+}
+
+\frame {
+	\frametitle {Geometrik Dönüşümler: dönme}
+
+	\includegraphics[width=0.9\textwidth]{img/16-rot.png}
+}
+
+\frame {
+	\frametitle {Geometrik Dönüşümler: dönme: eşitlik}
+
+	$\theta$ açısı kadar saat yönünde döndür,
+
+	\begin{columns}
+		\column{0.5\textwidth}
+			\includegraphics[width=0.9\textwidth]{img/16-rot-eq.png}
+
+		\column{0.5\textwidth}
+			$\begin{bmatrix}
+			x'\\y'\end{bmatrix} = \begin{bmatrix}
+			cos \theta & -sin \theta\\
+			sin \theta & cos \theta
+			\end{bmatrix} \cdot \begin{bmatrix}
+			x\\y
+			\end{bmatrix}$
+	\end{columns}
+	\medskip
+	$P' = R \cdot P$
+}
+
+\frame {
+	\frametitle {Geometrik Dönüşümler: 3D dönme}
+
+	Koordinat ekseni etrafında, saat yönünde döndür
+
+	\begin{columns}
+		\column{0.5\textwidth}
+			\includegraphics[width=0.9\textwidth]{img/17-3d-rot.png}
+		\column{0.5\textwidth}
+			$R_x(\alpha) = \begin{bmatrix}
+				1 & 0 & 0\\
+				0 & cos \alpha & -sin \alpha\\
+				0 & sin \alpha & cos \alpha
+			\end{bmatrix}$
+			...
+	\end{columns}
 }
 
 \end{document}
