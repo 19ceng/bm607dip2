@@ -1,0 +1,8 @@
+\begin{thebibliography}{100}
+
+\bibitem{foo}
+Foo, Bar
+\newblock {\em Title}.
+\newblock Nerede yayınlandı, 2011
+
+\end{thebibliography}
