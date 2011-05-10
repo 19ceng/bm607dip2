@@ -1,9 +1,1 @@
-Latex Beamer şablonları
-
-    $ make
-    $ make handout
-    $ make notes
-
-# Yardımcı
-
-- http://www.uncg.edu/cmp/reu/presentations/Charles%20Batts%20-%20Beamer%20Tutorial.pdf
+Kemal Özkan hocanın doktora [tezi](http://www.belgeler.com/blg/ypt/dusuk-cozunurluklu-goruntulerden-yuksek-cozunurluklu-goruntu-elde-etme-reconstruction-of-a-single-high-resolution-image-from-low-resolution-images#) "2. Resim Çakıştırma" bölümü
